@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Book Recommender</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 class="looking">Looking for your next book?</h1>
+        <section class="center-container">
+            <div class="oval">
+                <h2>Name a book you've enjoyed and I'll find a new one for you...</h2>
+                <form id="book-form">
+                    <input type="text" placeholder="Title..." class="title-input" id="title-input" required>
+                    <input type="text" placeholder="Author..." class="author-input" id="author-input">
+                    <button id="submit-button">Get Recommendations</button>
+                </form>
+            </div>
+        </section>
+        <section class="lower-container" id="lower-container"></section>
+        <script>
+
+            function sanitizeInput (userInput) {
+                return userInput.replace(/[<>\/\\]/g,"");
+            }
+
+            const gcfUrl = "https://us-east5-book-recommender-450001.cloudfunctions.net/book-recommender";
+            async function getResults(body) {
+
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Please Wait...';
+
+                const response = await fetch(gcfUrl,{
+                    method:'POST',
+                    mode:"cors",
+                    headers:{
+                        'Content-Type':'application/json',
+                    },
+                    body:JSON.stringify(body)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const results = await response.json();
+                const titles = results['top_titles'];
+                const summaries = results['top_summaries'];
+                const lowerContainer = document.getElementById('lower-container');
+                const numBoxes = titles.length;
+
+                lowerContainer.innerHTML = '';
+                let maxHeight = 200;
+                const boxes = [];
+                for (i=0;i<numBoxes;i++) {
+                    const box = document.createElement('div');
+                    box.className = 'rec-box';
+                    box.innerHTML = (i+1).toString() + '.   Title:' + '<br>' + titles[i] + '<br>' + 'Summary:' + '<br>' + summaries[i];
+                    boxes.push(box);
+                    lowerContainer.appendChild(box);
+                    const contentHeight = box.scrollHeight;
+                    maxHeight = Math.max(maxHeight,contentHeight);
+                }
+                boxes.forEach(box => {
+                box.style.height = maxHeight + 'px';
+            });
+                submitButton.disabled = false;
+                submitButton.textContent = 'Get Recommendations';
+            }
+
+
+            document.getElementById('book-form').addEventListener('submit',function(event) {
+                event.preventDefault();
+                const titleInput = sanitizeInput(document.getElementById('title-input').value).slice(0,220);
+                const authorInput = sanitizeInput(document.getElementById('author-input').value).slice(0,220);
+                if (!titleInput) {
+                    alert('Please provide a title.');
+                    return;
+                }
+                var body = {
+                    'title':titleInput
+                };
+                if (authorInput) {
+                    body.author = authorInput
+                };
+                getResults(body);
+            })
+        </script>
+    </body>
+</html>

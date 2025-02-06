@@ -1,0 +1,86 @@
+body {
+    background-image: url('library.avif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.looking {
+    color: rgb(203, 119, 8);
+    text-align: center;
+    font-family:'papyrus';
+}
+
+.center-container {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.oval {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 50%;
+    padding: 80px 40px;
+    width: 700px;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#book-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    width: 250px;
+    padding: 8px;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align:center;
+}
+
+button {
+    margin-top: 0;
+}
+
+.lower-container {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 4px;
+}
+
+
+.rec-box {
+    width: 300px;
+    margin-left: 12px;
+    margin-top: 8px;
+    background-color: rgb(67, 65, 65);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    color: #E3CBAE;
+    font-family: 'Garamind','Merriweather',serif;
+    text-align: center;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
