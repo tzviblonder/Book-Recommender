@@ -1,7 +1,7 @@
 # Book Recommender System
 ## Overview
 
-####This is a book recommendation system that suggests similar books based on user input. It uses OpenAI embeddings and PCA for dimensionality reduction, comparing book summaries to a vector database of 120,000+ books.
+#### This is a book recommendation system that suggests similar books based on user input. It uses OpenAI embeddings and PCA for dimensionality reduction, comparing book summaries to a vector database of 120,000+ books.
 
     Frontend: HTML, CSS, JavaScript (hosted on Netlify)
     Backend: Python API (hosted as a Google Cloud Function)
