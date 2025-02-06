@@ -10,8 +10,8 @@
 
 #### How It Works:
 1. The users enters a book title and author.
-2. This information is sent to the backend, which generated a summary of that book using OpenAI's API.
-3. The summary is converted into a 1536-dimensional vector embedding.
-4. The embedding is reduced using PCA into 256 components; this is done to reduce memory and computation.
-5. The system finds similar books by computing the doc product of the new embedding with stored embeddings.
+2. This information is sent to the backend, which generates a summary of that book using OpenAI's API.
+3. The summary is converted into a 1536-dimensional vector embedding using OpenAI's embedding model.
+4. The embedding is reduced using PCA (principal component analysis) into 256 components to reduce memory and computation.
+5. The system finds similar books by computing the dot product of the new embedding with stored embeddings.
 6. A list of recommended books and their summaries is returned.
