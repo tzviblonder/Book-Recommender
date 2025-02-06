@@ -2,6 +2,11 @@
 ## Overview
 
 #### This is a book recommendation system that suggests similar books based on user input. It uses OpenAI embeddings and PCA for dimensionality reduction, comparing book summaries to a vector database of 120,000+ books.
+<ul>
+    <li>Frontend: HTML/CSS & JavaScript, hosted on Netlify</li>
+    <li>Backend: Python API, hosted as a Google Cloud Function on GCP</li>
+    <li>Database: 120,000+ book titles, summaries, and 256-dimensional embeddings</li>
+</ul>
 
     Frontend: HTML, CSS, JavaScript (hosted on Netlify)
     Backend: Python API (hosted as a Google Cloud Function)
