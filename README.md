@@ -15,3 +15,6 @@
 4. The embedding is reduced using PCA (principal component analysis) into 256 components to match the dimensionality of the vector database, which was reduced from 1536 to 256 to minimize memory usage and computation.
 5. The system finds similar books by computing the dot product of the new embedding with stored embeddings.
 6. A list of recommended books and their summaries is returned.
+
+#### Where can I try it?
+[Right here.](https://resplendent-baklava-9241b7.netlify.app/)
